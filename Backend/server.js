@@ -374,4 +374,4 @@ app.post('/api/process-prescription', limiter, upload.single('file'), async (req
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+module.exports = app;
