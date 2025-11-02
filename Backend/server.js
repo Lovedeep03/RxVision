@@ -35,10 +35,10 @@ const upload = multer({
   }
 });
 
-if (!process.env.GEMINI_API_KEY) {
-  console.warn('GEMINI_API_KEY is not set. Set it in .env for the server to work.');
+if (!process.env.API) {
+  console.warn('API is not set. Set it in .env for the server to work.');
 }
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '', { apiVersion: 'v1' });
+const genAI = new GoogleGenerativeAI(process.env.API || '', { apiVersion: 'v1' });
 // Model resolution: try env override first, then known-good fallbacks
 const MODEL_CANDIDATES = [
   (process.env.GEMINI_MODEL || '').trim(),
@@ -58,7 +58,7 @@ const https = require('https');
 let discoveredModelsCache = null; // array of model names in preference order
 const fetchDiscoveredModels = () => new Promise((resolve) => {
   if (discoveredModelsCache) return resolve(discoveredModelsCache);
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.API;
   if (!apiKey) return resolve([]);
   const url = `https://generativelanguage.googleapis.com/v1/models?key=${encodeURIComponent(apiKey)}`;
   https.get(url, (res) => {

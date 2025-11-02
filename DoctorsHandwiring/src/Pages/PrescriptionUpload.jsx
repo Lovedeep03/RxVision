@@ -255,7 +255,7 @@ const PrescriptionUpload = () => {
               mb: 2
             }}
           >
-            ⚕ Medico Prescription Analyzer
+            ⚕ RxVision
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
             Upload your prescription image for AI-powered analysis
